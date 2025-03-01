@@ -1,0 +1,92 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
+}
+
+.container-panel {
+  background: rgba(0, 26, 26, 0.9);
+  border: 1px solid rgba(4, 153, 163, 0.767);
+  box-shadow: 0 0 15px rgba(2, 100, 107, 0.1);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  position: relative;
+}
+
+.container-panel::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(10, 240, 255, 0.05) 0%, transparent 100%);
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+.container-panel:hover {
+  border-color: rgba(10, 240, 255, 0.3);
+  box-shadow: 0 0 20px rgba(10, 240, 255, 0.2);
+}
+
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two-column layout */
+  gap: 16px;
+}
+
+/* Left Panel */
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Right Panel */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* AI Training Section */
+.ai-training-container {
+  grid-column: span 2; /* Full width */
+  display: flex;
+  gap: 16px;
+}
+
+@media (max-width: 768px) {
+  .dashboard {
+    grid-template-columns: 1fr; /* Single column for mobile */
+  }
+
+  .ai-training-container {
+    flex-direction: column;
+  }
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateY(-25%);
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translateY(0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}
+
+.animate-bounce {
+  animation: bounce 1s infinite;
+}
+
